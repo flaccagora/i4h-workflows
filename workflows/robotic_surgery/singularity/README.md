@@ -25,7 +25,7 @@ On the HPC cluster, pull and convert to Singularity:
 
 ```sh
 # Pull Docker image and convert to Singularity
-singularity pull robotic_surgery.sif docker://<registry>/robotic_surgery:latest
+singularity pull robotic_surgery.sif docker://flaccagora/robotic_surgery:first
 
 # Or if using Docker Hub
 singularity pull robotic_surgery.sif docker://docker.io/<username>/robotic_surgery:latest
@@ -56,7 +56,7 @@ From: <registry>/robotic_surgery:latest
 Build with:
 
 ```sh
-singularity build robotic_surgery.sif robotic_surgery.def
+singularity build --fakeroot --sandbox --nv robotic_surgery_first workflows/robotic_surgery/singularity/robotic_surgery.def 
 ```
 
 ## Running on HPC Clusters
