@@ -50,13 +50,13 @@ From: nvidia/cuda:12.8.1-devel-ubuntu24.04
         bash /root/miniconda3/miniconda.sh -b -u -p /root/miniconda3 && \
         rm /root/miniconda3/miniconda.sh
 
-    source /root/miniconda3/bin/activate && \
+    . /root/miniconda3/bin/activate && \
         conda tos accept && \
         conda init --all && \
         conda create -n robotic_surgery python=3.11 -y
 
     # Install workflow dependencies
-    source /root/miniconda3/bin/activate && \
+    . /root/miniconda3/bin/activate && \
         conda activate robotic_surgery && \
         cd /workspace/i4h-workflows && \
         BUILD_DOCKER_IMAGE=true bash tools/env_setup_robot_surgery.sh
