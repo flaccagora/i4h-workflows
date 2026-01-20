@@ -58,6 +58,13 @@ else
     git clone -b release/2.3.0 https://github.com/isaac-sim/IsaacLab.git "$ISAACLAB_DIR"
 fi
 
+# Ensure IsaacLab can find the Isaac Sim installation by creating a symlink to _isaac_sim
+if [ -d "/isaac-sim" ]; then
+    echo "Linking /isaac-sim to $ISAACLAB_DIR/_isaac_sim"
+    # This ensures isaaclab.sh finds /isaac-sim/python.sh at _isaac_sim/python.sh
+    ln -sf /isaac-sim "$ISAACLAB_DIR/_isaac_sim"
+fi
+
 echo "Installing IsaacLab..."
 pushd "$ISAACLAB_DIR"
 # We attempt to run the install script. 

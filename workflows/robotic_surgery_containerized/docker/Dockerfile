@@ -17,7 +17,7 @@
 
 # Users can override this with --build-arg ISAAC_SIM_IMAGE=...
 # Ensure the tag matches the requirements (e.g. Isaac Sim 4.2+, 5.0 if available)
-ARG ISAAC_SIM_IMAGE=nvcr.io/nvidia/isaac-sim:4.2.0
+ARG ISAAC_SIM_IMAGE=nvcr.io/nvidia/isaac-sim:5.0.0
 FROM ${ISAAC_SIM_IMAGE}
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -58,6 +58,9 @@ RUN bash workflows/robotic_surgery_containerized/scripts/install_deps.sh
 # Environment variables
 ENV NVIDIA_VISIBLE_DEVICES=all
 ENV NVIDIA_DRIVER_CAPABILITIES=graphics,video,compute,utility,display
+# ENV PYTHONPATH=/workspace/i4h-workflows/workflows/robotic_surgery/scripts
+# ENV RTI_LICENSE_FILE=/root/rti/rti_license.dat
+# ENV PYTHON=/isaac-sim/python.sh
 
 # Default entrypoint
 CMD ["/bin/bash"]
