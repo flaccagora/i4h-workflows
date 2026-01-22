@@ -70,5 +70,17 @@ RUN source ~/miniconda3/bin/activate && \
     cd /workspace/i4h-workflows && \
     BUILD_DOCKER_IMAGE=true bash tools/env_setup_robot_surgery.sh
 
+RUN source ~/miniconda3/bin/activate && \
+    conda activate robotic_surgery && \
+    cd /workspace/i4h-workflows && \
+    pip install --upgrade \
+            isaacsim-rl \
+            isaacsim-replicator \
+            isaacsim-extscache-physics \
+            isaacsim-extscache-kit-sdk \
+            isaacsim-extscache-kit \
+            isaacsim-app \
+            --extra-index-url https://pypi.nvidia.com
+
 ENV PYTHONPATH=/workspace/i4h-workflows/workflows/robotic_surgery/scripts
 ENV RTI_LICENSE_FILE=/root/rti/rti_license.dat

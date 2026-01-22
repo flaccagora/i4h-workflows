@@ -61,5 +61,16 @@ From: nvidia/cuda:12.8.1-devel-ubuntu24.04
         cd /workspace/i4h-workflows && \
         BUILD_DOCKER_IMAGE=true bash tools/env_setup_robot_surgery.sh
 
+    # install omni.kit
+    . /root/miniconda3/bin/activate && \
+        conda activate robotic_surgery && \
+        pip install --upgrade \
+            isaacsim-rl \
+            isaacsim-replicator \
+            isaacsim-extscache-physics \
+            isaacsim-extscache-kit-sdk \
+            isaacsim-extscache-kit \
+            isaacsim-app \
+            --extra-index-url https://pypi.nvidia.com
 %runscript
     exec /bin/bash "$@"
